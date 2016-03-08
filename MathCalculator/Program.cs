@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RootCalculation;
+
+namespace MathCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string choise = "y";
+            while(choise != "n")
+            {
+                Console.WriteLine("Enter number for root calculation");
+                double number;
+                double.TryParse(Console.ReadLine(), out number);
+                Console.WriteLine("Enter power for root calculation");
+                double power;
+                double.TryParse(Console.ReadLine(), out power);
+                Console.WriteLine("Enter correctness");
+                double correctness;
+                double.TryParse(Console.ReadLine(), out correctness);
+                double resMyFunc = RootCalculator.CalcRoot(number, power, correctness);
+                Console.WriteLine(" MyFunc result : {0}", resMyFunc);
+                double resMathPow = Math.Pow(number, 1 / power);
+                Console.WriteLine(" Math.Pow result: {0}", resMathPow);
+                Console.Write("Do you want to repeat? (y - yes / n - no) ...");
+                choise = Console.ReadLine();
+            }
+        }
+    }
+}

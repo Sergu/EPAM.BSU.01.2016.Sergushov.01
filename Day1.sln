@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraySorting", "ArraySorting\ArraySorting.csproj", "{95074E08-0D0C-450E-9473-21F830F6C258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathClasses", "RootCalculation\MathClasses.csproj", "{441FE232-3FAD-46F0-BBF1-CD0325B8FC73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootApp", "MathCalculator\RootApp.csproj", "{478F18CB-A2F9-48EA-9992-0214A8392D2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95074E08-0D0C-450E-9473-21F830F6C258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95074E08-0D0C-450E-9473-21F830F6C258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95074E08-0D0C-450E-9473-21F830F6C258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95074E08-0D0C-450E-9473-21F830F6C258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{441FE232-3FAD-46F0-BBF1-CD0325B8FC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441FE232-3FAD-46F0-BBF1-CD0325B8FC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441FE232-3FAD-46F0-BBF1-CD0325B8FC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441FE232-3FAD-46F0-BBF1-CD0325B8FC73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478F18CB-A2F9-48EA-9992-0214A8392D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478F18CB-A2F9-48EA-9992-0214A8392D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478F18CB-A2F9-48EA-9992-0214A8392D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478F18CB-A2F9-48EA-9992-0214A8392D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
