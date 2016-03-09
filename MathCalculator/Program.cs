@@ -27,6 +27,14 @@ namespace MathCalculator
                 Console.WriteLine(" MyFunc result : {0}", resMyFunc);
                 double resMathPow = Math.Pow(number, 1 / power);
                 Console.WriteLine(" Math.Pow result: {0}", resMathPow);
+                if(Math.Abs(resMathPow - resMyFunc)<=correctness)
+                {
+                    Console.WriteLine("    Result : true");
+                }
+                else
+                {
+                    Console.WriteLine("    Result : false");
+                }
                 Console.Write("Do you want to repeat? (y - yes / n - no) ...");
                 choise = Console.ReadLine();
             }
