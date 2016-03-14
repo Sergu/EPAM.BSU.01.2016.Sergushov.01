@@ -23,7 +23,7 @@ namespace ArraySorting
                 {
                     if (GetMinElement(arr[j]) < GetMinElement(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -40,7 +40,7 @@ namespace ArraySorting
                 {
                     if (GetMinElement(arr[j]) > GetMinElement(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -57,7 +57,7 @@ namespace ArraySorting
                 {
                     if (GetMaxElement(arr[j]) > GetMaxElement(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace ArraySorting
                 {
                     if (GetMaxElement(arr[j]) < GetMaxElement(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -91,7 +91,7 @@ namespace ArraySorting
                 {
                     if (GetRowSum(arr[j]) > GetRowSum(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -108,7 +108,7 @@ namespace ArraySorting
                 {
                     if (GetRowSum(arr[j]) < GetRowSum(arr[j + 1]))
                     {
-                        Swap(arr, j, j + 1);
+                        Swap(ref arr[j],ref arr[j+1]);
                     }
                 }
             }
@@ -146,11 +146,11 @@ namespace ArraySorting
             }
             return sum;
         }
-        private static void Swap(int[][] arr, int firstRow, int secondRow)
+        private static void Swap(ref int[] firstRow,ref int[] secondRow)
         {
-            int[] temp = arr[secondRow];
-            arr[secondRow] = arr[firstRow];
-            arr[firstRow] = temp;
+            int[] temp = secondRow;
+            secondRow = firstRow;
+            firstRow = temp;
         }
     }
 }
