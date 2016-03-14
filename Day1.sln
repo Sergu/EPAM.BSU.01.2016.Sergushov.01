@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathClasses", "RootCalculat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootApp", "MathCalculator\RootApp.csproj", "{478F18CB-A2F9-48EA-9992-0214A8392D2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{0266633A-3CC6-42F8-A09C-BC3ED0689677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathClassesTests", "UnitTest\MathClassesTests.csproj", "{0266633A-3CC6-42F8-A09C-BC3ED0689677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

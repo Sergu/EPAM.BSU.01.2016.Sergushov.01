@@ -20,6 +20,18 @@ namespace RootCalculation
         /// <returns>корень числа</returns>
         public static double CalcRoot(double number, double power, double correctness)
         {
+            if(number < 0)
+            {
+                throw new ArgumentException();
+            }
+            if(power < 0)
+            {
+                throw new ArgumentException();
+            }
+            if (correctness < 0)
+            {
+                throw new ArgumentException();
+            }
             double x0 = number / 2;
             double x1 = 1 / power * ((power - 1) * x0 + number / Math.Pow(x0, power - 1));
             while (Math.Abs(x1 - x0) > correctness)
