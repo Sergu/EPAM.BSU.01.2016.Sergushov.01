@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RootCalculation;
+using ArraySorting;
 
 namespace MathCalculator
 {
@@ -11,6 +12,13 @@ namespace MathCalculator
     {
         static void Main(string[] args)
         {
+            int[][] arr = new int[][]{
+                new int[] {4,-1,102,235,123 },
+                new int[] {-12,-564},
+                new int[] {}
+            };
+            BubbleSorting.SortAscending(arr, Criterion.ByMaxElem);
+
             string choise = "y";
             while(choise != "n")
             {

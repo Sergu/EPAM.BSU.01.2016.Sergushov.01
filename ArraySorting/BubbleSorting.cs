@@ -24,6 +24,10 @@ namespace ArraySorting
         {
             public int GetKey(int[] arr)
             {
+                if (ReferenceEquals(arr, null))
+                    return int.MinValue;
+                if (arr.Length == 0)
+                    return int.MinValue;
                 int max = int.MinValue;
                 for (int i = 0; i < arr.Length; i++)
                 {
@@ -39,6 +43,10 @@ namespace ArraySorting
         {
             public int GetKey(int[] arr)
             {
+                if (ReferenceEquals(arr, null))
+                    return int.MaxValue;
+                if (arr.Length == 0)
+                    return int.MaxValue;
                 int min = int.MaxValue;
                 for (int i = 0; i < arr.Length; i++)
                 {
@@ -54,6 +62,10 @@ namespace ArraySorting
         {
             public int GetKey(int[] arr)
             {
+                if (ReferenceEquals(arr,null))
+                    return int.MinValue;
+                if (arr.Length == 0)
+                    return int.MinValue;
                 int sum = 0;
                 for (int i = 0; i < arr.Length; i++)
                 {
@@ -83,6 +95,8 @@ namespace ArraySorting
         /// <param name="arr">исходный массив</param>
         public static void SortDescending(int[][] arr, Criterion criterion)
         {
+            if (ReferenceEquals(null, arr))
+                throw new NullReferenceException();
             IStradegy stradegy;
             switch(criterion){
                 case Criterion.ByMaxElem:
@@ -107,6 +121,8 @@ namespace ArraySorting
 
         public static void SortAscending(int[][] arr, Criterion criterion)
         {
+            if (ReferenceEquals(null, arr))
+                throw new NullReferenceException();
             IStradegy stradegy;
             switch (criterion)
             {
@@ -132,6 +148,8 @@ namespace ArraySorting
         
         private static void SortAsc(int[][] arr,IComparer<int> comparator,IStradegy stradegy)
         {
+            if (ReferenceEquals(null, arr))
+                throw new NullReferenceException();
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 for (int j = 0; j < arr.Length - i - 1; j++)
@@ -148,6 +166,8 @@ namespace ArraySorting
 
         private static void SortDesc(int[][] arr,IComparer<int> comparator,IStradegy stradegy)
         {
+            if (ReferenceEquals(null, arr))
+                throw new NullReferenceException();
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 for (int j = 0; j < arr.Length - i - 1; j++)

@@ -48,6 +48,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ArraySorting\ArraySorting.csproj">
+      <Project>{95074e08-0d0c-450e-9473-21f830f6c258}</Project>
+      <Name>ArraySorting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RootCalculation\MathClasses.csproj">
       <Project>{441fe232-3fad-46f0-bbf1-cd0325b8fc73}</Project>
       <Name>MathClasses</Name>
