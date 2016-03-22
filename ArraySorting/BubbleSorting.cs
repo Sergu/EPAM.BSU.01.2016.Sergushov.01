@@ -138,7 +138,7 @@ namespace ArraySorting
                 {
                     int firstKey = stradegy.GetKey(arr[j]);
                     int secKey = stradegy.GetKey(arr[j + 1]);
-                    if (comparator.Compare(firstKey, secKey) == -1)
+                    if (comparator.Compare(firstKey, secKey) == 1)
                     {
                         Swap(ref arr[j], ref arr[j + 1]);
                     }
@@ -154,7 +154,7 @@ namespace ArraySorting
                 {
                     int firstKey = stradegy.GetKey(arr[j]);
                     int secKey = stradegy.GetKey(arr[j + 1]);
-                    if(comparator.Compare(firstKey,secKey) == 1)
+                    if(comparator.Compare(firstKey,secKey) == -1)
                     {
                         Swap(ref arr[j], ref arr[j + 1]);
                     }
