@@ -17,7 +17,7 @@ namespace MathCalculator
                 new int[] {-12,-564},
                 new int[] {}
             };
-            BubbleSorting.SortAscending(arr, Criterion.ByMaxElem);
+            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByMaxElem);
 
             string choise = "y";
             while(choise != "n")

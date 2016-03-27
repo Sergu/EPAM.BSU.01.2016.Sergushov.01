@@ -12,14 +12,14 @@ namespace ArraySortingTests
         public void SortAscending_nullArray_throwsException()
         {
             int[][] arr = null;
-            BubbleSorting.SortAscending(arr, Criterion.ByMinElem);
+            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByMinElem);
         }
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public void SortDescending_nullArray_throwsException()
         {
             int[][] arr = null;
-            BubbleSorting.SortDescending(arr, Criterion.ByMinElem);
+            BubbleSortDelegates.SortDescending(arr, Criterion.ByMinElem);
         }
         [TestMethod]
         public void SortAscending_NotNullArray_CriterialByMaxElem_equalsResultArray()
@@ -34,7 +34,7 @@ namespace ArraySortingTests
                 new int[] {-12,-564},
                 new int[] {4,-1,102,235,123 }
             };
-            BubbleSorting.SortAscending(arr, Criterion.ByMaxElem);
+            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByMaxElem);
             Assert.AreEqual(arr, resultArray);
         }
         [TestMethod]
@@ -52,7 +52,7 @@ namespace ArraySortingTests
                 new int[] {4,-1,102,235,123 },
                 new int[] {0,0}
             };
-            BubbleSorting.SortAscending(arr, Criterion.ByMinElem);
+            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByMinElem);
             Assert.AreEqual(arr, resultArray);
         }
         [TestMethod]
@@ -70,7 +70,7 @@ namespace ArraySortingTests
                 new int[] {4,-1,10,23,123 },
                 new int[] {1,2,3}
             };
-            BubbleSorting.SortAscending(arr, Criterion.ByRowSum);
+            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByRowSum);
             Assert.AreEqual(arr, resultArray);
         }
     }

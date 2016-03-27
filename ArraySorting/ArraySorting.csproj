@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BubbleSorting.cs" />
+    <Compile Include="BubbleSortDelegates\BubbleSortDelegates.cs" />
+    <Compile Include="BubleSortInterfaces\BubbleSortInterfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
