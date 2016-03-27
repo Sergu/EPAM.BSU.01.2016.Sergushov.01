@@ -133,10 +133,6 @@ namespace ArraySorting
                 throw new NullReferenceException();
             Sort(arr, del);
         }
-        /// <summary>
-        /// Сортирует исходный массив в порядке возрастания максимальных элементов строк матрицы.
-        /// </summary>
-        /// <param name="arr">исходный массив</param>
         
         private static void Sort(int[][] arr,CompareDelegate del)
         {
