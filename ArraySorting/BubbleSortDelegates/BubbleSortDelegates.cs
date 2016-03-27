@@ -6,31 +6,27 @@ using System.Threading.Tasks;
 
 namespace ArraySorting
 {
-    public static class KeyCalculator
+    public static class ArrayComparer
     {
-        public static int GetMaxElem(int[] arr)
+        public static int CompareByMaxElem(int[] arr1,int[] arr2)
         {
-            IStradegy stradegy = new MaxElemCalculator();
-            return stradegy.GetKey(arr);
+            IComparer<int[]> stradegy = new MaxElemComparer();
+            return stradegy.Compare(arr1,arr2);
         }
-        public static int GetMinElem(int[] arr)
+        public static int CompareByMinElem(int[] arr1,int[] arr2)
         {
-            IStradegy stradegy = new MinElemCalculator();
-            return stradegy.GetKey(arr);
+            IComparer<int[]> stradegy = new MinElemComparer();
+            return stradegy.Compare(arr1,arr2);
         }
-        public static int GetRowSum(int[] arr)
+        public static int CompareByRowSum(int[] arr1,int[] arr2)
         {
-            IStradegy stradegy = new RowSumCalculator();
-            return stradegy.GetKey(arr);
+            IComparer<int[]> stradegy = new RowSumComparer();
+            return stradegy.Compare(arr1,arr2);
         }
     }
-    public interface IStradegy
+    public class MaxElemComparer : IComparer<int[]>
     {
-        int GetKey(int[] arr);
-    }
-    public class MaxElemCalculator : IStradegy
-    {
-        public int GetKey(int[] arr)
+        private int GetKey(int[] arr)
         {
             if (ReferenceEquals(arr, null))
                 return int.MinValue;
@@ -46,15 +42,27 @@ namespace ArraySorting
             }
             return max;
         }
+        public int Compare(int[] x, int[] y)
+        {
+            if (GetKey(x) == GetKey(y))
+                return 0;
+            else
+            {
+                if (GetKey(x) > GetKey(y))
+                    return 1;
+                else
+                    return 0;
+            }
+        }
     }
-    public class MinElemCalculator : IStradegy
+    public class MinElemComparer : IComparer<int[]>
     {
-        public int GetKey(int[] arr)
+        private int GetKey(int[] arr)
         {
             if (ReferenceEquals(arr, null))
-                return int.MaxValue;
+                return int.MinValue;
             if (arr.Length == 0)
-                return int.MaxValue;
+                return int.MinValue;
             int min = int.MaxValue;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -65,10 +73,22 @@ namespace ArraySorting
             }
             return min;
         }
+        public int Compare(int[] x, int[] y)
+        {
+            if (GetKey(x) == GetKey(y))
+                return 0;
+            else
+            {
+                if (GetKey(x) > GetKey(y))
+                    return 1;
+                else
+                    return 0;
+            }
+        }
     }
-    public class RowSumCalculator : IStradegy
+    public class RowSumComparer : IComparer<int[]>
     {
-        public int GetKey(int[] arr)
+        private int GetKey(int[] arr)
         {
             if (ReferenceEquals(arr, null))
                 return int.MinValue;
@@ -81,12 +101,17 @@ namespace ArraySorting
             }
             return sum;
         }
-    }
-    public class Comparator : IComparer<int>
-    {
-        public int Compare(int numb1, int numb2)
+        public int Compare(int[] x, int[] y)
         {
-            return numb1 - numb2;
+            if (GetKey(x) == GetKey(y))
+                return 0;
+            else
+            {
+                if (GetKey(x) > GetKey(y))
+                    return 1;
+                else
+                    return 0;
+            }
         }
     }
     /// <summary>
@@ -94,38 +119,36 @@ namespace ArraySorting
     /// </summary>
     public static class BubbleSortDelegates
     {
-        public delegate int GetKeyDelegate(int[] arr);
+        public delegate int CompareDelegate(int[] arr1,int[] arr2);
         /// <summary>
         /// Сортирует исходный массив в порядке возрастания в зависимости от передаваемого в метод критерия сравнения строк.
         /// </summary>
         /// <param name="arr">исходный массив</param>
 
-        public static void BubbleSort(int[][] arr, GetKeyDelegate del)
+        public static void BubbleSort(int[][] arr, CompareDelegate del)
         {
             if (ReferenceEquals(null, arr))
                 throw new NullReferenceException();
             if (ReferenceEquals(null, del))
                 throw new NullReferenceException();
-            Sort(arr, new Comparator(), del);
+            Sort(arr, del);
         }
         /// <summary>
         /// Сортирует исходный массив в порядке возрастания максимальных элементов строк матрицы.
         /// </summary>
         /// <param name="arr">исходный массив</param>
         
-        private static void Sort(int[][] arr,IComparer<int> comparator,GetKeyDelegate del)
+        private static void Sort(int[][] arr,CompareDelegate del)
         {
             if (ReferenceEquals(null, arr))
                 throw new NullReferenceException();
-            if (ReferenceEquals(null, comparator))
+            if (ReferenceEquals(null, del))
                 throw new NullReferenceException();
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 for (int j = 0; j < arr.Length - i - 1; j++)
                 {
-                    int firstKey = del(arr[j]);
-                    int secKey = del(arr[j + 1]);
-                    if (comparator.Compare(firstKey, secKey) > 1)
+                    if (del(arr[j],arr[j+1]) > 0)
                     {
                         Swap(ref arr[j], ref arr[j + 1]);
                     }

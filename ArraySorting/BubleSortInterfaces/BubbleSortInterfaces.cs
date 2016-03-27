@@ -6,9 +6,45 @@ using System.Threading.Tasks;
 
 namespace ArraySorting
 {
-    public static class KeysMethods
+    public static class CompareArrays
     {
-        public static int GetMaxElem(int[] arr)
+        public static int CompareByMaxElem(int[] arr1, int[] arr2)
+        {
+            if (GetMaxElem(arr1) == GetMaxElem(arr2))
+                return 0;
+            else
+            {
+                if (GetMaxElem(arr1) > GetMaxElem(arr2))
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+        public static int CompareByMinElem(int[] arr1,int[] arr2)
+        {
+            if (GetMinElem(arr1) == GetMinElem(arr2))
+                return 0;
+            else
+            {
+                if (GetMinElem(arr1) > GetMinElem(arr2))
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+        public static int CompareByRowSum(int[] arr1,int[] arr2)
+        {
+            if (GetRowSum(arr1) == GetRowSum(arr2))
+                return 0;
+            else
+            {
+                if (GetRowSum(arr1) > GetRowSum(arr2))
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+        private static int GetMaxElem(int[] arr)
         {
             if (ReferenceEquals(arr, null))
                 return int.MinValue;
@@ -24,12 +60,12 @@ namespace ArraySorting
             }
             return max;
         }
-        public static int GetMinElem(int[] arr)
+        private static int GetMinElem(int[] arr)
         {
             if (ReferenceEquals(arr, null))
-                return int.MaxValue;
+                return int.MinValue;
             if (arr.Length == 0)
-                return int.MaxValue;
+                return int.MinValue;
             int min = int.MaxValue;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -40,7 +76,7 @@ namespace ArraySorting
             }
             return min;
         }
-        public static int GetRowSum(int[] arr)
+        private static int GetRowSum(int[] arr)
         {
             if (ReferenceEquals(arr, null))
                 return int.MinValue;
@@ -54,54 +90,52 @@ namespace ArraySorting
             return sum;
         }
     }
-    public class StradegyMaxElem : IStradegy
+    public class ComparerMaxElem : IComparer<int[]>
     {
-        public int GetKey(int[] arr)
+        public int Compare(int[] x,int[] y)
         {
-            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(KeysMethods.GetMaxElem);
-            return del(arr);
+            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(CompareArrays.CompareByMaxElem);
+            return del(x,y);
         }
     }
-    public class StradegyMinElem : IStradegy
+    public class ComparerMinElem : IComparer<int[]>
     {
-        public int GetKey(int[] arr)
+        public int Compare(int[] x,int[] y)
         {
-            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(KeysMethods.GetMinElem);
-            return del(arr);
+            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(CompareArrays.CompareByMinElem);
+            return del(x,y);
         }
     }
-    public class StradegyRowSum : IStradegy
+    public class ComparerRowSum : IComparer<int[]>
     {
-        public int GetKey(int[] arr)
+        public int Compare(int[] x,int[] y)
         {
-            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(KeysMethods.GetRowSum);
-            return del(arr);
+            BubbleSortInterfaces.GetKeyDelegate del = new BubbleSortInterfaces.GetKeyDelegate(CompareArrays.CompareByRowSum);
+            return del(x,y);
         }
     }
     public static class BubbleSortInterfaces
     {
-        public delegate int GetKeyDelegate(int[] arr);
-        public static void BubbleSort(int[][] arr, IStradegy stradegy)
+        public delegate int GetKeyDelegate(int[] arr1,int[] arr2);
+        public static void BubbleSort(int[][] arr, IComparer<int[]> stradegy)
         {
             if (ReferenceEquals(null, arr))
                 throw new NullReferenceException();
             if (ReferenceEquals(null, stradegy))
                 throw new NullReferenceException();
-            Sort(arr, new Comparator(), stradegy);
+            Sort(arr, stradegy);
         }
-        public static void Sort(int[][] arr, IComparer<int> comparator, IStradegy stradegy)
+        private static void Sort(int[][] arr, IComparer<int[]> stradegy)
         {
             if (ReferenceEquals(null, arr))
                 throw new NullReferenceException();
-            if (ReferenceEquals(null, comparator))
+            if (ReferenceEquals(null, stradegy))
                 throw new NullReferenceException();
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 for (int j = 0; j < arr.Length - i - 1; j++)
                 {
-                    int firstKey = stradegy.GetKey(arr[j]);
-                    int secKey = stradegy.GetKey(arr[j + 1]);
-                    if (comparator.Compare(firstKey, secKey) > 1)
+                    if (stradegy.Compare(arr[j],arr[j+1]) > 0)
                     {
                         Swap(ref arr[j], ref arr[j + 1]);
                     }

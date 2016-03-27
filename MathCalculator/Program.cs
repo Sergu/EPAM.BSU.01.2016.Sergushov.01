@@ -13,11 +13,13 @@ namespace MathCalculator
         static void Main(string[] args)
         {
             int[][] arr = new int[][]{
-                new int[] {4,-1,102,235,123 },
-                new int[] {-12,-564},
+                new int[] {4,-13,102,235,123 },
+                new int[] {-12},
                 new int[] {}
             };
-            BubbleSortDelegates.BubbleSortInterface(arr, Criterion.ByMaxElem);
+            //BubbleSortDelegates.BubbleSort(arr, new BubbleSortDelegates.CompareDelegate(ArrayComparer.CompareByMaxElem));
+            BubbleSortInterfaces.BubbleSort(arr, new ComparerRowSum());
+
 
             string choise = "y";
             while(choise != "n")
